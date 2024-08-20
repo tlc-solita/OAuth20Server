@@ -28,6 +28,7 @@ var connectionString = builder.Configuration.GetConnectionString("BaseDBConnecti
 builder.Services.AddDbContext<BaseDBContext>(op =>
 {
     op.UseSqlServer(connectionString);
+    //op.UseSqlite(connectionString);
 });
 
 
@@ -94,8 +95,5 @@ app.UseCors("UserInfoPolicy");
 app.UseAuthentication();
 app.UseAuthorization();
 app.UseSession();
-app.UseEndpoints(endpoints =>
-{
-    endpoints.MapDefaultControllerRoute();
-});
+app.MapDefaultControllerRoute();
 app.Run();
